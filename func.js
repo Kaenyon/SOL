@@ -12,7 +12,6 @@ function search_problem(num) {
     let name = "s"+num;
     if(name in window){
       document.getElementById("solution").style.display = "block";
-      document.getElementById("footer").style.marginTop = "20px";
       document.getElementById("sol_num").innerHTML = "Solution# " + num;
       document.getElementById("source").innerHTML = window[name];
     }
