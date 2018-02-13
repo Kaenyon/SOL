@@ -17,6 +17,13 @@
 
  .syntaxhighlighter {
    background-color: white !important;
+   height: auto;
+   max-height: 800px;
+   overflow: auto;
+   overflow-y:scroll;
+   word-break: normal !important;
+   word-wrap: normal !important;
+   white-space: pre !important;
  }
  .syntaxhighlighter .line.alt1 {
    background-color: #f8f0e8 !important;
@@ -48,6 +55,28 @@
  }
  .syntaxhighlighter.collapsed {
    overflow: visible !important;
+ }
+ .syntaxhighlighter.collapsed .toolbar {
+   color: white !important;
+   background: white !important;
+   border: 1px solid white !important;
+ }
+ .syntaxhighlighter.collapsed .toolbar a {
+   color: white !important;
+ }
+ .syntaxhighlighter.collapsed .toolbar a:hover {
+   color: red !important;
+ }
+ .syntaxhighlighter .toolbar {
+   color: #fcf8f4 !important;
+   background: #fcf8f4 !important;
+   border: none !important;
+ }
+ .syntaxhighlighter .toolbar a {
+   color: white !important;
+ }
+ .syntaxhighlighter .toolbar a:hover {
+   color: black !important;
  }
  .syntaxhighlighter .plain, .syntaxhighlighter .plain a {
    color: #402020 !important;
