@@ -61,17 +61,107 @@
       margin-top:300px;
       padding:0;
     }
+		/**
+* SyntaxHighlighter
+* http://alexgorbatchev.com/SyntaxHighlighter
+*
+* SyntaxHighlighter is donationware. If you are using it, please donate.
+* http://alexgorbatchev.com/SyntaxHighlighter/donate.html
+*
+* @version
+* 3.0.83 (July 02 2010)
+*
+* @copyright
+* Copyright (C) 2004-2010 Alex Gorbatchev.
+*
+* @license
+* Dual licensed under the MIT and GPL licenses.
+*/
+.syntaxhighlighter {
+background-color: white !important;
+}
+.syntaxhighlighter .line.alt1 {
+background-color: #f8f0e8 !important;
+}
+.syntaxhighlighter .line.alt2 {
+background-color: #fcf8f4 !important;
+}
+.syntaxhighlighter .line.highlighted.alt1, .syntaxhighlighter .line.highlighted.alt2 {
+background-color: #e0e0e0 !important;
+}
+.syntaxhighlighter .line.highlighted.number {
+color: black !important;
+}
+.syntaxhighlighter table caption {
+color: black !important;
+}
+.syntaxhighlighter .gutter {
+color: #603030 !important;
+}
+.syntaxhighlighter .gutter .line {
+border-right: 3px solid #e8d0d0 !important;
+}
+.syntaxhighlighter .gutter .line.highlighted {
+background-color: #6ce26c !important;
+color: white !important;
+}
+.syntaxhighlighter.printing .line .content {
+border: none !important;
+}
+.syntaxhighlighter.collapsed {
+overflow: visible !important;
+}
+.syntaxhighlighter .plain, .syntaxhighlighter .plain a {
+color: #402020 !important;
+}
+.syntaxhighlighter .comments, .syntaxhighlighter .comments a {
+color: #808080 !important;
+}
+.syntaxhighlighter .string, .syntaxhighlighter .string a {
+color: #e07070 !important;
+}
+.syntaxhighlighter .keyword {
+color: #6c1e48 !important;
+}
+.syntaxhighlighter .preprocessor {
+color: #902860 !important;
+}
+.syntaxhighlighter .variable {
+color: #aa7700 !important;
+}
+.syntaxhighlighter .value {
+color: #009900 !important;
+}
+.syntaxhighlighter .functions {
+color: #ff9000 !important;
+}
+.syntaxhighlighter .constants {
+color: #0066cc !important;
+}
+.syntaxhighlighter .script {
+font-weight: bold !important;
+color: #0066cc !important;
+background-color: none !important;
+}
+.syntaxhighlighter .color1, .syntaxhighlighter .color1 a {
+color: #f03030 !important;
+}
+.syntaxhighlighter .color2, .syntaxhighlighter .color2 a {
+color: #ff1493 !important;
+}
+.syntaxhighlighter .color3, .syntaxhighlighter .color3 a {
+color: red !important;
+}
+
+.syntaxhighlighter .keyword {
+font-weight: bold !important;
+}
+
   </style>
-  <link href="https://sailor02.github.io/SOL/shCore.css" rel="stylesheet" type="text/css">
-  <link href="https://sailor02.github.io/SOL/shThemeDefault.css" rel="stylesheet" type="text/css">
-  <script src="https://sailor02.github.io/SOL/shCore.js" type="text/javascript"></script>
-  <script type="text/javascript" src="https://sailor02.github.io/SOL/shBrushCpp.js"></script>
-  <script type="text/javascript" src="https://sailor02.github.io/SOL/shBrushJava.js"></script>
-  <script type="text/javascript" src="https://sailor02.github.io/SOL/shBrushPython.js"></script>
-  <script src = "solved.txt"></script>
-  <script type="text/javascript">
-     SyntaxHighlighter.all();
-</script>
+ <link href="http://alexgorbatchev.com/pub/sh/current/styles/shCore.css" rel="stylesheet" type="text/css">
+  <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://alexgorbatchev.com/pub/sh/current/scripts/shBrushCpp.js"></script>
+  <script src = "images/source.txt"></script>
   <script type="text/javascript">
     function searchKeyPress(e){
       e = e || window.event;
@@ -82,46 +172,16 @@
       return true;
     }
     function search_problem() {
-      let num = document.getElementById('problem_num').value;
-      if(num < 1000 || num > 15500) alert("올바른 문제 번호를 입력해주세요");
-      else{
-        let name = "s"+num;
-        if(name in window){
-          document.getElementById("solution").style.display = "block";
-          document.getElementById("footer").style.marginTop = "20px";
-          document.getElementById("sol_num").innerHTML = "Solution# " + num;
-          var old_element = document.getElementById("source");
-          old_element.outerHTML = "";
-          delete old_element;
-          var new_element = document.createElement("PRE");
-          new_element.setAttribute("id", "source");
-          new_element.setAttribute("class", "brush: cpp");
-          new_element.textContent = window[name];
-          document.getElementById("entry").appendChild(new_element);
-          SyntaxHighlighter.highlight(new_element, new_element);
-        }
-        else alert("풀이가 아직 업로드되지 않았습니다");
-      }
-    }
-  </script>
-</head>
-<body>
-  <div align = "center">
-    <img src = "title.png" width = "100" height = "100" id = "title">
-  </div>
-  <h1 align = "center">BOJ Solving Strategies</h1>
-  <div align = "center">
-    <form method = "get">
-      <input type = "number" value = "num" id = "problem_num" onkeypress = "return searchKeyPress(event);" placeholder = "문제 번호"/>
-      <button type = "button" id = "btn" onclick = "search_problem()">검색</button>
-    </form>
-  </div>
-  <div class = "solution" id = "solution" style = "display:block" align = "center">
-    <div class = "entry" id = "entry" align = "left">
-      <h2 id = "sol_num">Solution#</h2>
-      <textarea class = "comment" id = "comment" style = "height:250px" readonly cols="120"></textarea>
-      <h2>Source Code</h2>
-      <pre class = "brush: cpp" id = "source">#include <cstdio>
+      var old_element = document.getElementById("source");
+			old_element.outerHTML = "";
+			delete old_element;
+			document.getElementById("solution").style.display = "block";
+      document.getElementById("footer").style.marginTop = "20px";
+			var new_element = document.createElement("PRE");
+			new_element.setAttribute("id", "source");
+			new_element.setAttribute("class", "brush: cpp");
+			new_element.textContent = String.raw`
+#include <cstdio>
 
 using namespace std;
 
@@ -142,13 +202,37 @@ int main() {
 			printf("%d %d\n", a, b);
 		}
 	}
-}</pre>
+}
+`;
+			alert(new_element.textContent);
+			document.getElementById("entry").appendChild(new_element);
+			SyntaxHighlighter.highlight(new_element, new_element);
+    }
+  </script>
+</head>
+<body>
+  <div align = "center">
+    <img src = "images/title.png" width = "100" height = "100" id = "title">
+  </div>
+  <h1 align = "center">BOJ Solving Strategies</h1>
+  <div align = "center">
+    <form method = "get">
+      <input type = "number" value = "num" id = "problem_num" onkeypress = "return searchKeyPress(event);" placeholder = "문제 번호"/>
+      <button type = "button" id = "btn" onclick = "search_problem()">검색</button>
+    </form>
+  </div>
+  <div class = "solution" id = "solution" style = "display:none" align = "center">
+    <div class = "entry" id = "entry" align = "left">
+      <h2 id = "sol_num">Solution#</h2>
+      <textarea class = "comment" id = "comment" style = "height:250px" readonly cols="120"></textarea>
+      <h2>Source Code</h2>
+      <pre class = "brush: cpp" id = "source"></pre>
     </div>
   </div>
   <div id = "footer">
     <h2 align = "center"><u>일부 문제는 풀이를 공개하지 않습니다</u>(ex "구구", "占쏙옙")</h2>
     <div align = "center">
-      <img src = "bottom.png" width = "100" height = "100">
+      <img src = "images/bottom.png" width = "100" height = "100">
     </div>
   </div>
 </body>
