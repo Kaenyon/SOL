@@ -3,115 +3,127 @@
 <head>
   <meta charset="utf-8" />
   <style>
-  h1, h2{
-    font-weight:bolder;
-    font-family:sans-serif;
-  }
-  h1{
-    font-size:32px;
-    color:#402020;
-  }
-  h2{
-    font-size:24px;
-    color:#a02020;
-    padding:0px;
-  }
-  body{
-    background-color: #f8f0e8;
-    padding:0;
-    margin:100px 0 0 0;
-  }
-  form input{
-    font-size:20px;
-    width:100px;
-    border-radius:3px;
-    border:1px solid;
-    vertical-align:middle;
-    padding-left:10px;
-    margin-left:20px
-  }
-  form button{
-    font-size:16px;
-    border-radius:3px;
-    color:#a02020;
-    background-color:#e8e8e8;
-    font-weight:bolder;
-    vertical-align:middle;
-  }
-  #solution {
-    margin-top:50px;
-    height: 1250px;
-    background-color:#f0e0d0;
-  }
-  .entry{
-    height: 100%;
-    width: 935px;
-    background-color:#f0e0d0;
-  }
-  #source, #comment {
-    padding:10px;
-    margin:0px;
-    font-size:16px;
-    font-family:sans-serif;
-    background-color:#f8f0e8;
-    color:#201010;
-    overflow-y: scroll;
-  }
-  #footer{
-    margin-top:300px
-    padding:0;
-  }
+    h1, h2{
+      font-weight:bolder;
+      font-family:sans-serif;
+    }
+    h1{
+      font-size:32px;
+      color:#402020;
+    }
+    h2{
+      font-size:24px;
+      color:#a02020;
+      padding:0px;
+    }
+    body{
+      background-color: #f8f0e8;
+      padding:0;
+      margin:100px 0 0 0;
+    }
+    form input{
+      font-size:20px;
+      width:100px;
+      border-radius:3px;
+      border:1px solid;
+      vertical-align:middle;
+      padding-left:10px;
+      margin-left:20px;
+    }
+    form button{
+      font-size:16px;
+      border-radius:3px;
+      color:#a02020;
+      background-color:#e8e8e8;
+      font-weight:bolder;
+      vertical-align:middle;
+    }
+    #solution {
+      margin-top:50px;
+      height: 1250px;
+      background-color:#f0e0d0;
+    }
+    .entry{
+      height: 100%;
+      width: 935px;
+      background-color:#f0e0d0;
+    }
+    #comment {
+      padding:10px;
+      margin:0px;
+      font-size:16px;
+      font-family:sans-serif;
+      background-color:#f8f0e8;
+      color:#201010;
+      overflow-y: scroll;
+    }
+    #footer{
+      margin-top:300px;
+      padding:0;
+    }
   </style>
   <link href="shCore.css" rel="stylesheet" type="text/css"/>
   <link href="shThemeDefault.css" rel="stylesheet" type="text/css"/>
-  <script type="text/javascript" src="func.js"></script>
   <script type="text/javascript" src="shCore.js"></script>
   <script type="text/javascript" src="shBrushCpp.js"></script>
   <script type="text/javascript" src="shBrushJava.js"></script>
   <script type="text/javascript" src="shBrushPython.js"></script>
   <script type="text/javascript">
-  function searchKeyPress(e){
-    e = e || window.event;
-    if (e.keyCode == 13){
-      document.getElementById('btn').click();
-      return false;
+    function searchKeyPress(e){
+      e = e || window.event;
+      if (e.keyCode == 13){
+        document.getElementById('btn').click();
+        return false;
+      }
+      return true;
     }
-    return true;
-  }
-  function search_problem(num) {
-    if(num < 1000 || num > 15500) alert("올바른 문제 번호를 입력해주세요");
-    else{
-      alert(num);
-      let url = "https://sailor02.github.io/SOL/" + num;
-      window.location(url);
-      /*else alert("풀이가 아직 업로드되지 않았습니다");*/
+    function search_problem() {
+      let num = document.getElementById('problem_num').value;
+      if(num < 1000 || num > 15500) alert("올바른 문제 번호를 입력해주세요");
+      else{
+        let name = "s"+num;
+        if(name in window){
+          document.getElementById("solution").style.display = "block";
+          document.getElementById("footer").style.marginTop = "20px";
+          document.getElementById("sol_num").innerHTML = "Solution# " + num;
+          var old_element = document.getElementById("source");
+          old_element.outerHTML = "";
+          delete old_element;
+          var new_element = document.createElement("PRE");
+    			new_element.setAttribute("id", "source");
+    			new_element.setAttribute("class", "brush: cpp");
+    			new_element.textContent = window[name];
+          document.getElementById("solution").appendChild(new_element);
+          SyntaxHighlighter.highlight(new_element, new_element);
+        }
+        else alert("풀이가 아직 업로드되지 않았습니다");
+      }
     }
-  }
   </script>
 </head>
 <body>
-  <div align="center">
-    <img src="title.png" width="100" height="100" id = "title">
+  <div align = "center">
+    <img src = "title.png" width = "100" height = "100" id = "title">
   </div>
   <h1 align = "center">BOJ Solving Strategies</h1>
-  <div align="center">
-    <form method="get">
-      <input type="number" value="num" id = "problem_num" onkeypress="return searchKeyPress(event);" placeholder="문제 번호"/>
-      <button type = "button" id = "btn" onclick="search_problem(document.getElementById('problem_num').value)">검색</button>
+  <div align = "center">
+    <form method = "get">
+      <input type = "number" value = "num" id = "problem_num" onkeypress = "return searchKeyPress(event);" placeholder = "문제 번호"/>
+      <button type = "button" id = "btn" onclick = "search_problem()">검색</button>
     </form>
   </div>
-  <div class="solution" id = "solution" style = "display:none" align = "center">
-    <div class="entry" align = "left">
-      <h2 id = "sol_num">Solution# 1000</h2>
-      <textarea class="comment" id = "comment" style = "height:250px" readonly cols="120"></textarea>
+  <div class = "solution" id = "solution" style = "display:none" align = "center">
+    <div class = "entry" align = "left">
+      <h2 id = "sol_num">Solution#</h2>
+      <textarea class = "comment" id = "comment" style = "height:250px" readonly cols="120"></textarea>
       <h2>Source Code</h2>
-      <textarea class="source" id = "source"  style = "height:800px" readonly cols="120"></textarea>
+      <pre class = "brush: cpp" id = "source"></pre>
     </div>
   </div>
   <div id = "footer">
     <h2 align = "center"><u>일부 문제는 풀이를 공개하지 않습니다</u>(ex "구구", "占쏙옙")</h2>
-    <div align="center">
-      <img src="bottom.png" width="100" height="100">
+    <div align = "center">
+      <img src = "bottom.png" width = "100" height = "100">
     </div>
   </div>
 </body>
