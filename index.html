@@ -60,13 +60,92 @@
       margin-top:300px;
       padding:0;
     }
+    .syntaxhighlighter {
+  background-color: white !important;
+}
+.syntaxhighlighter .line.alt1 {
+  background-color: #f8f0e8 !important;
+}
+.syntaxhighlighter .line.alt2 {
+  background-color: #fcf8f4 !important;
+}
+.syntaxhighlighter .line.highlighted.alt1, .syntaxhighlighter .line.highlighted.alt2 {
+  background-color: #e0e0e0 !important;
+}
+.syntaxhighlighter .line.highlighted.number {
+  color: black !important;
+}
+.syntaxhighlighter table caption {
+  color: black !important;
+}
+.syntaxhighlighter .gutter {
+  color: #603030 !important;
+}
+.syntaxhighlighter .gutter .line {
+  border-right: 3px solid #e8d0d0 !important;
+}
+.syntaxhighlighter .gutter .line.highlighted {
+  background-color: #6ce26c !important;
+  color: white !important;
+}
+.syntaxhighlighter.printing .line .content {
+  border: none !important;
+}
+.syntaxhighlighter.collapsed {
+  overflow: visible !important;
+}
+.syntaxhighlighter .plain, .syntaxhighlighter .plain a {
+  color: #402020 !important;
+}
+.syntaxhighlighter .comments, .syntaxhighlighter .comments a {
+  color: #808080 !important;
+}
+.syntaxhighlighter .string, .syntaxhighlighter .string a {
+  color: #e07070 !important;
+}
+.syntaxhighlighter .keyword {
+  color: #6c1e48 !important;
+}
+.syntaxhighlighter .preprocessor {
+  color: #902860 !important;
+}
+.syntaxhighlighter .variable {
+  color: #aa7700 !important;
+}
+.syntaxhighlighter .value {
+  color: #009900 !important;
+}
+.syntaxhighlighter .functions {
+  color: #ff9000 !important;
+}
+.syntaxhighlighter .constants {
+  color: #0066cc !important;
+}
+.syntaxhighlighter .script {
+  font-weight: bold !important;
+  color: #0066cc !important;
+  background-color: none !important;
+}
+.syntaxhighlighter .color1, .syntaxhighlighter .color1 a {
+  color: #f03030 !important;
+}
+.syntaxhighlighter .color2, .syntaxhighlighter .color2 a {
+  color: #ff1493 !important;
+}
+.syntaxhighlighter .color3, .syntaxhighlighter .color3 a {
+  color: red !important;
+}
+
+.syntaxhighlighter .keyword {
+  font-weight: bold !important;
+}
   </style>
-  <link href="shCore.scss" rel="stylesheet" type="text/css">
-  <link href="_theme_template.scss" rel="stylesheet" type="text/css">
-  <script type="text/javascript" src="shCore.js"></script>
-  <script type="text/javascript" src="shBrushCpp.js"></script>
+  <link href = "shCore.scss" rel = "stylesheet" type = "text/css">
+  <link href = "_theme_template.scss" rel = "stylesheet" type = "text/css">
+  <script type = "text/javascript" src = "shCore.js"></script>
+  <script type = "text/javascript" src = "shBrushCpp.js"></script>
   <script src = "solved.txt"></script>
-  <script type="text/javascript">
+  <script type = "text/javascript">
     function searchKeyPress(e){
       e = e || window.event;
       if (e.keyCode == 13){
