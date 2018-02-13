@@ -15,3 +15,6 @@ var search_problem function (num) {
     /*else alert("풀이가 아직 업로드되지 않았습니다");*/
   }
 };
+var hello(){
+  alert("hello");
+};
