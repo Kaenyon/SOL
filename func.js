@@ -9,6 +9,7 @@ function searchKeyPress(e){
 function search_problem(num) {
   if(num < 1000 || num > 15500) alert("올바른 문제 번호를 입력해주세요");
   else{
+    alert(num);
     let url = "https://sailor02.github.io/SOL/" + num;
     window.location(url);
     /*else alert("풀이가 아직 업로드되지 않았습니다");*/
