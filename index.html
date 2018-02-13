@@ -69,9 +69,6 @@
   <script type="text/javascript" src="https://sailor02.github.io/SOL/shBrushPython.js"></script>
   <script src = "solved.txt"></script>
   <script type="text/javascript">
-     SyntaxHighlighter.all();
-</script>
-  <script type="text/javascript">
     function searchKeyPress(e){
       e = e || window.event;
       if (e.keyCode == 13){
@@ -115,33 +112,12 @@
       <button type = "button" id = "btn" onclick = "search_problem()">검색</button>
     </form>
   </div>
-  <div class = "solution" id = "solution" style = "display:block" align = "center">
+  <div class = "solution" id = "solution" style = "display:none" align = "center">
     <div class = "entry" id = "entry" align = "left">
       <h2 id = "sol_num">Solution#</h2>
       <textarea class = "comment" id = "comment" style = "height:250px" readonly cols="120"></textarea>
       <h2>Source Code</h2>
-      <pre class = "brush: cpp" id = "source">#include <cstdio>
-
-using namespace std;
-
-int main() {
-	int n, k, i, a, b, tp;
-	scanf("%d", &n);
-	while (n--) {
-		scanf("%d", &k);
-		if (k == 0) printf("1 0\n");
-		else {
-			a = 0;
-			b = 1;
-			for (i = 1; i < k; i++) {
-				tp = b;
-				b += a;
-				a = tp;
-			}
-			printf("%d %d\n", a, b);
-		}
-	}
-}</pre>
+      <pre class = "brush: cpp" id = "source"></pre>
     </div>
   </div>
   <div id = "footer">
