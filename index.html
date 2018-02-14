@@ -94,7 +94,9 @@
           document.getElementById("entry").appendChild(new_element);
           var myWindow = window.open("https://sailor02.github.io/SOL/1000", "_blank", "width=920,height=300", false);
           myWindow.onload = function() {
-            myWindow.document.getElementById("source2").textContent = window[name];
+            let src2 = document.getElementById("source2");
+            myWindow.src2.textContent = window[name];
+            myWindow.SyntaxHighlighter.highlight(src2, src2);
           };
           SyntaxHighlighter.highlight(new_element, new_element);
         }
