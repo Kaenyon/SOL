@@ -17,7 +17,8 @@
 
  .syntaxhighlighter {
    background-color: white !important;
-   overflow-y: : hidden;
+   height:2500px;
+   overflow:hidden;
    word-break: normal !important;
    word-wrap: normal !important;
    white-space: pre !important;
