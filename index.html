@@ -93,7 +93,9 @@
           new_element.textContent = window[name];
           document.getElementById("entry").appendChild(new_element);
           var myWindow = window.open("https://sailor02.github.io/SOL/1000", "_blank", "width=920,height=300", false);
-          myWindow.document.getElementById("source2").textContent = window[name];
+          myWindow.onload = function() {
+            myWindow.document.getElementById("source2").textContent = window[name];
+          };
           SyntaxHighlighter.highlight(new_element, new_element);
         }
         else alert("풀이가 아직 업로드되지 않았습니다");
